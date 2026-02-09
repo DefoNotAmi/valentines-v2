@@ -4,184 +4,197 @@
 <meta charset="UTF-8">
 <title>My Valentine 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #ffe0ea, #ffb3c6, #ff8fab);
-  font-family: 'Montserrat', sans-serif;
-  color: #5b0f28;
-  overflow-x: hidden;
+  min-height:100vh;
+  background: linear-gradient(180deg,#ffe0ea,#ffb3c6,#ff8fab);
+  font-family:'Montserrat',sans-serif;
+  color:#6b102f;
+  overflow-x:hidden;
 }
 
-/* ===== CLOUDS ===== */
+/* CLOUDS */
 .cloud {
-  position: fixed;
-  background: rgba(255,255,255,0.85);
-  border-radius: 60px;
-  width: 140px;
-  height: 50px;
-  top: 12%;
-  filter: blur(0.5px);
-  z-index: 1;
-  animation: cloudFloat 70s linear infinite;
+  position:fixed;
+  width:220px;
+  height:70px;
+  background:rgba(255,255,255,0.8);
+  border-radius:50px;
+  animation:cloudMove 90s linear infinite;
+  z-index:1;
 }
-.cloud::before, .cloud::after {
-  content: "";
-  position: absolute;
-  background: rgba(255,255,255,0.9);
-  border-radius: 50%;
+.cloud::before,.cloud::after{
+  content:"";
+  position:absolute;
+  background:rgba(255,255,255,0.9);
+  border-radius:50%;
 }
-.cloud::before {
-  width: 60px; height: 60px;
-  top: -28px; left: 15px;
-}
-.cloud::after {
-  width: 80px; height: 80px;
-  top: -38px; left: 55px;
+.cloud::before{width:90px;height:90px;top:-40px;left:20px;}
+.cloud::after{width:120px;height:120px;top:-55px;left:80px;}
+@keyframes cloudMove{
+  from{transform:translateX(-300px);}
+  to{transform:translateX(110vw);}
 }
 
-@keyframes cloudFloat {
-  from { transform: translateX(-200px); }
-  to { transform: translateX(120vw); }
-}
-
-/* ===== FLOATING HEARTS ===== */
+/* FLOATING HEARTS */
 .heart {
-  position: fixed;
-  width: 22px;
-  height: 22px;
-  background: #ff477e;
-  transform: rotate(45deg);
-  opacity: 0.55;
-  animation: floatUp 11s linear infinite;
-  z-index: 2;
+  position:fixed;
+  width:22px;
+  height:22px;
+  background:#ff4d6d;
+  transform:rotate(45deg);
+  opacity:0.45;
+  animation:floatUp 12s linear infinite;
+  z-index:2;
 }
-.heart::before,
-.heart::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  background: #ff477e;
-  border-radius: 50%;
+.heart::before,.heart::after{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  background:#ff4d6d;
+  border-radius:50%;
 }
-.heart::before { top: -11px; left: 0; }
-.heart::after { left: -11px; top: 0; }
-
-@keyframes floatUp {
-  0% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
-  20% { opacity: 0.6; }
-  100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+.heart::before{top:-11px;left:0;}
+.heart::after{left:-11px;top:0;}
+@keyframes floatUp{
+  0%{transform:translateY(110vh) rotate(45deg);opacity:0;}
+  20%{opacity:0.6;}
+  100%{transform:translateY(-20vh) rotate(45deg);opacity:0;}
 }
 
-/* ===== MAIN SCENE ===== */
-.scene {
-  position: relative;
-  z-index: 3;
-  max-width: 900px;
-  margin: auto;
-  padding: 100px 25px 200px;
-  text-align: center;
+/* MAIN */
+.scene{
+  position:relative;
+  z-index:3;
+  max-width:900px;
+  margin:auto;
+  padding:120px 25px 200px;
+  text-align:center;
 }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  margin-bottom: 20px;
-  color: #7a102f;
-  text-shadow: 0 0 25px rgba(255, 71, 126, 0.6);
+/* TITLE */
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:5.6rem;
+  color:#7a0f2e;
+  text-shadow:0 0 40px rgba(255,77,109,0.8);
+  margin-bottom:20px;
+}
+.subtitle{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;
+  margin-bottom:100px;
+  opacity:0.9;
 }
 
-.subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 90px;
-  opacity: 0.9;
+/* HEART BOX */
+.heart-box{
+  background:rgba(255,255,255,0.75);
+  border-radius:40px;
+  padding:45px;
+  margin:80px 0;
+  box-shadow:0 20px 45px rgba(255,77,109,0.25);
+  position:relative;
+}
+.heart-box::before{
+  content:"♥";
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:2rem;
+  color:#ff4d6d;
+}
+p{
+  font-size:1.15rem;
+  line-height:2.1;
+  margin-bottom:24px;
+}
+.fill{
+  font-style:italic;
+  opacity:0.6;
 }
 
-/* ===== LOVE BOX ===== */
-.love-box {
-  background: rgba(255,255,255,0.75);
-  border-radius: 32px;
-  padding: 48px;
-  margin: 90px 0;
-  box-shadow: 0 25px 60px rgba(255, 71, 126, 0.25);
+/* BOUQUET */
+.bouquet{
+  font-size:5rem;
+  cursor:pointer;
+  margin:90px 0 20px;
+}
+.flowers span{
+  font-size:3rem;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+.flowers span.visible{opacity:1;}
+#bouquetText{display:none;}
+
+/* HEART BUTTON */
+.heart-btn{
+  width:70px;
+  height:70px;
+  background:#ff4d6d;
+  position:relative;
+  transform:rotate(45deg);
+  margin:60px auto;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(255,77,109,0.6);
+}
+.heart-btn::before,.heart-btn::after{
+  content:"";
+  position:absolute;
+  width:70px;
+  height:70px;
+  background:#ff4d6d;
+  border-radius:50%;
+}
+.heart-btn::before{top:-35px;left:0;}
+.heart-btn::after{left:-35px;top:0;}
+.heart-btn span{
+  position:absolute;
+  width:100%;
+  height:100%;
+  transform:rotate(-45deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:500;
 }
 
-p {
-  font-size: 1.15rem;
-  line-height: 2.15;
-  margin-bottom: 26px;
+/* ENVELOPES */
+.envelopes{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:80px;
 }
+.envelope{
+  background:#fff;
+  border-radius:18px;
+  padding:30px;
+  cursor:pointer;
+  box-shadow:0 15px 35px rgba(255,77,109,0.25);
+  position:relative;
+  font-family:'Playfair Display',serif;
+}
+.seal{
+  width:26px;
+  height:26px;
+  background:#c9184a;
+  border-radius:50%;
+  margin:10px auto 0;
+}
+.letter-content{display:none;margin-top:25px;font-family:'Montserrat',sans-serif;}
 
-.fill {
-  font-style: italic;
-  opacity: 0.6;
-}
-
-/* ===== INTERACTIVE BOUQUET ===== */
-.bouquet {
-  font-size: 5rem;
-  cursor: pointer;
-  animation: pulse 2.5s infinite;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 25px rgba(255, 71, 126, 0.6));
-}
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-
-.hidden {
-  display: none;
-}
-
-/* ===== BUTTON ===== */
-button {
-  margin-top: 60px;
-  padding: 18px 42px;
-  font-size: 1.05rem;
-  border-radius: 50px;
-  border: none;
-  background: linear-gradient(90deg, #ff4d6d, #ff8fab);
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 35px rgba(255, 77, 109, 0.6);
-}
-button:hover { transform: scale(1.05); }
-
-/* ===== GRASS ===== */
-.grass {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(to top, #2d6a4f, #74c69d);
-  z-index: 4;
-}
-.blade {
-  position: absolute;
-  bottom: 0;
-  width: 4px;
-  height: 30px;
-  background: #40916c;
-  border-radius: 4px;
-  animation: sway 3s ease-in-out infinite;
-}
-@keyframes sway {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-footer {
-  margin-top: 140px;
-  opacity: 0.6;
+footer{
+  margin-top:180px;
+  opacity:0.65;
 }
 </style>
 </head>
@@ -189,96 +202,110 @@ footer {
 <body>
 
 <script>
-// CLOUDS SPELLING "I LOVE YOU"
-const letters = ["I","L","O","V","E","Y","O","U"];
-letters.forEach((l, i) => {
-  const c = document.createElement("div");
-  c.className = "cloud";
-  c.style.left = 10 + i * 10 + "vw";
-  c.style.top = "8%";
-  c.innerHTML = `<div style="font-size:2rem;text-align:center;line-height:50px;color:#ff4d6d;font-family:'Playfair Display',serif;">${l}</div>`;
+// clouds
+for(let i=0;i<6;i++){
+  const c=document.createElement("div");
+  c.className="cloud";
+  c.style.top=Math.random()*40+"%";
+  c.style.animationDuration=70+Math.random()*40+"s";
   document.body.appendChild(c);
-});
-
-// Floating hearts
-for (let i = 0; i < 30; i++) {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.animationDelay = Math.random() * 6 + "s";
+}
+// hearts
+for(let i=0;i<30;i++){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDelay=Math.random()*6+"s";
   document.body.appendChild(h);
 }
 
-// Grass blades
-const grass = document.createElement("div");
-grass.className = "grass";
-for (let i = 0; i < 120; i++) {
-  const b = document.createElement("div");
-  b.className = "blade";
-  b.style.left = Math.random() * 100 + "%";
-  b.style.height = 20 + Math.random() * 30 + "px";
-  b.style.animationDelay = Math.random() * 2 + "s";
-  grass.appendChild(b);
+let bloomIndex=0;
+function bloom(){
+  const flowers=document.querySelectorAll(".flowers span");
+  if(bloomIndex<flowers.length){
+    flowers[bloomIndex].classList.add("visible");
+    bloomIndex++;
+    setTimeout(bloom,700);
+    document.getElementById("bouquetText").style.display="block";
+  }
 }
-document.body.appendChild(grass);
-
-// Bouquet reveal
-function bloomBouquet() {
-  document.getElementById("bouquetMessage").style.display = "block";
+function openEnvelope(id){
+  document.getElementById(id).style.display="block";
 }
 </script>
 
 <div class="scene">
 
-<h1>My Valentine 🤍</h1>
-<div class="subtitle">A little angel garden made just for you.</div>
+<h1>My Valentine</h1>
+<div class="subtitle">A soft angelic place, made only for you 🤍</div>
 
-<div class="bouquet" onclick="bloomBouquet()">💐</div>
-<div class="fill">(click the bouquet)</div>
-
-<div id="bouquetMessage" class="love-box hidden">
+<div class="heart-box">
   <p>
-    If I could place this bouquet in your hands,
-    I would do it slowly, carefully,
-    like everything I feel for you.
+    Valentine’s Day isn’t just about love —
+    it’s about intention.
+    And every part of this was made with you in mind.
   </p>
-  <p class="fill">(Write what this bouquet represents.)</p>
+  <p class="fill">(Write why he is your Valentine.)</p>
 </div>
 
-<div class="love-box">
-  <p>
-    Valentine’s Day isn’t loud for me.
-    It’s gentle.
-    It’s choosing you in all the quiet ways.
-  </p>
-  <p class="fill">(Write why loving him feels right.)</p>
+<div class="bouquet" onclick="bloom()">💐</div>
+<div class="flowers">
+  <span>🌹</span><span>🌹</span><span>🌷</span><span>🌸</span><span>🌹</span>
 </div>
 
-<div class="love-box">
+<div id="bouquetText" class="heart-box">
   <p>
-    Even with distance, even with time,
-    my heart finds its way back to you.
+    One flower at a time —
+    like the way my feelings for you grew.
   </p>
-  <p class="fill">(Write reassurance or promises.)</p>
+  <p class="fill">(What this bouquet represents.)</p>
 </div>
 
-<button onclick="document.getElementById('missMe').style.display='block'">
-  Read this when you miss me 🤍
-</button>
-
-<div id="missMe" class="love-box hidden">
+<div class="heart-box">
   <p>
-    If you’re reading this,
-    I hope you feel wrapped in love.
-    I’m right here — always.
+    Loving you feels warm, safe, and real.
+    It’s not loud — it’s steady.
   </p>
-  <p class="fill">(Write comfort, warmth, and love.)</p>
+  <p class="fill">(Describe your love.)</p>
+</div>
+
+<div class="heart-btn">
+  <span>💗</span>
+</div>
+
+<h2 style="font-family:'Playfair Display',serif;margin-top:80px;">
+  Open these letters when you need me
+</h2>
+
+<div class="envelopes">
+  <div class="envelope" onclick="openEnvelope('miss')">
+    When you miss me
+    <div class="seal"></div>
+    <div id="miss" class="letter-content">
+      <p>(Write comfort and love.)</p>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openEnvelope('sleep')">
+    When you can’t sleep
+    <div class="seal"></div>
+    <div id="sleep" class="letter-content">
+      <p>(Write calm words.)</p>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="openEnvelope('need')">
+    When you feel needy
+    <div class="seal"></div>
+    <div id="need" class="letter-content">
+      <p>(Write reassurance.)</p>
+    </div>
+  </div>
 </div>
 
 <footer>
-  Forever yours 🤍  
-  <br>
-  <span class="fill">(sign your name & date)</span>
+  Forever yours 🤍<br>
+  <span class="fill">(your name & date)</span>
 </footer>
 
 </div>
