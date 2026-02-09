@@ -165,7 +165,7 @@ p{
   font-weight:500;
 }
 
-/* ENVELOPES */
+/* ENVELOPES WITH WAX SEAL */
 .envelopes{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -187,15 +187,39 @@ p{
   top:0; left:0;
   width:100%;
   height:50%;
-  background:#c9184a;
-  transform-origin:top;
-  transition:transform 0.7s ease;
+  background:#fff;
   border-top-left-radius:18px;
   border-top-right-radius:18px;
+  border-bottom:2px solid #c9184a;
+  transform-origin:top;
+  transition:transform 0.7s ease;
 }
-.envelope.open .flap{transform:rotateX(-180deg);}
-.letter-content{display:none;margin-top:25px;font-family:'Montserrat',sans-serif;}
-.envelope.open .letter-content{display:block;}
+.seal{
+  width:26px;
+  height:26px;
+  background:#c9184a;
+  border-radius:50%;
+  position:absolute;
+  top:12px;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 15px rgba(255,77,109,0.8);
+  transition:all 0.5s ease;
+}
+.envelope:hover .seal{
+  box-shadow:0 0 35px rgba(255,77,109,1);
+}
+.envelope.open .flap{
+  transform:rotateX(-180deg);
+}
+.letter-content{
+  display:none;
+  margin-top:25px;
+  font-family:'Montserrat',sans-serif;
+}
+.envelope.open .letter-content{
+  display:block;
+}
 
 footer{
   margin-top:180px;
@@ -224,6 +248,7 @@ for(let i=0;i<30;i++){
   document.body.appendChild(h);
 }
 
+// bouquet bloom
 let bloomIndex=0;
 function bloom(){
   const flowers=document.querySelectorAll(".flowers span");
@@ -240,12 +265,18 @@ function bloom(){
   reveal();
 }
 
-function toggleEnvelope(el){
-  el.classList.toggle('open');
-}
-
+// secret vow
 function revealVow(){
   document.getElementById('secretVow').style.display='block';
+}
+
+// envelopes open one at a time
+function toggleEnvelope(el){
+  const all=document.querySelectorAll('.envelope');
+  all.forEach(e=>{
+    if(e!==el) e.classList.remove('open');
+  });
+  el.classList.toggle('open');
 }
 </script>
 
@@ -288,6 +319,7 @@ function revealVow(){
 <div class="envelopes">
   <div class="envelope" onclick="toggleEnvelope(this)">
     <div class="flap"></div>
+    <div class="seal"></div>
     When you miss me
     <div class="letter-content">
       <p>(Write comfort and love.)</p>
@@ -296,6 +328,7 @@ function revealVow(){
 
   <div class="envelope" onclick="toggleEnvelope(this)">
     <div class="flap"></div>
+    <div class="seal"></div>
     When you can’t sleep
     <div class="letter-content">
       <p>(Write calm words.)</p>
@@ -304,6 +337,7 @@ function revealVow(){
 
   <div class="envelope" onclick="toggleEnvelope(this)">
     <div class="flap"></div>
+    <div class="seal"></div>
     When you feel needy
     <div class="letter-content">
       <p>(Write reassurance.)</p>
@@ -317,6 +351,5 @@ function revealVow(){
 </footer>
 
 </div>
-
 </body>
 </html>
