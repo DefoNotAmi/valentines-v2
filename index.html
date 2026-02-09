@@ -67,13 +67,13 @@ body {
   100%{transform:translateY(-20vh) rotate(45deg);opacity:0;}
 }
 
-/* MAIN */
+/* MAIN SCENE */
 .scene{
   position:relative;
   z-index:3;
   max-width:900px;
   margin:auto;
-  padding:120px 25px 200px;
+  padding:120px 25px 220px;
   text-align:center;
 }
 
@@ -134,7 +134,7 @@ p{
 .flowers span.visible{opacity:1;}
 #bouquetText{display:none;}
 
-/* HEART BUTTON */
+/* HEART BUTTON FOR SECRET VOW */
 .heart-btn{
   width:70px;
   height:70px;
@@ -153,8 +153,6 @@ p{
   background:#ff4d6d;
   border-radius:50%;
 }
-.heart-btn::before{top:-35px;left:0;}
-.heart-btn::after{left:-35px;top:0;}
 .heart-btn span{
   position:absolute;
   width:100%;
@@ -182,15 +180,22 @@ p{
   box-shadow:0 15px 35px rgba(255,77,109,0.25);
   position:relative;
   font-family:'Playfair Display',serif;
+  overflow:hidden;
 }
-.seal{
-  width:26px;
-  height:26px;
+.flap{
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:50%;
   background:#c9184a;
-  border-radius:50%;
-  margin:10px auto 0;
+  transform-origin:top;
+  transition:transform 0.7s ease;
+  border-top-left-radius:18px;
+  border-top-right-radius:18px;
 }
+.envelope.open .flap{transform:rotateX(-180deg);}
 .letter-content{display:none;margin-top:25px;font-family:'Montserrat',sans-serif;}
+.envelope.open .letter-content{display:block;}
 
 footer{
   margin-top:180px;
@@ -222,15 +227,25 @@ for(let i=0;i<30;i++){
 let bloomIndex=0;
 function bloom(){
   const flowers=document.querySelectorAll(".flowers span");
-  if(bloomIndex<flowers.length){
-    flowers[bloomIndex].classList.add("visible");
-    bloomIndex++;
-    setTimeout(bloom,700);
-    document.getElementById("bouquetText").style.display="block";
+  bloomIndex=0;
+  flowers.forEach(f=>f.classList.remove("visible"));
+  function reveal(){ 
+    if(bloomIndex<flowers.length){
+      flowers[bloomIndex].classList.add("visible");
+      bloomIndex++;
+      setTimeout(reveal,700);
+      document.getElementById("bouquetText").style.display="block";
+    }
   }
+  reveal();
 }
-function openEnvelope(id){
-  document.getElementById(id).style.display="block";
+
+function toggleEnvelope(el){
+  el.classList.toggle('open');
+}
+
+function revealVow(){
+  document.getElementById('secretVow').style.display='block';
 }
 </script>
 
@@ -252,7 +267,6 @@ function openEnvelope(id){
 <div class="flowers">
   <span>🌹</span><span>🌹</span><span>🌷</span><span>🌸</span><span>🌹</span>
 </div>
-
 <div id="bouquetText" class="heart-box">
   <p>
     One flower at a time —
@@ -261,43 +275,37 @@ function openEnvelope(id){
   <p class="fill">(What this bouquet represents.)</p>
 </div>
 
-<div class="heart-box">
+<div class="heart-btn" onclick="revealVow()"><span>💗</span></div>
+<div id="secretVow" class="heart-box" style="display:none;">
   <p>
-    Loving you feels warm, safe, and real.
-    It’s not loud — it’s steady.
+    This is my secret vow to you:
+    to hold you, cherish you, and love you, always.
   </p>
-  <p class="fill">(Describe your love.)</p>
+  <p class="fill">(Add your personal vow here.)</p>
 </div>
 
-<div class="heart-btn">
-  <span>💗</span>
-</div>
-
-<h2 style="font-family:'Playfair Display',serif;margin-top:80px;">
-  Open these letters when you need me
-</h2>
-
+<h2 style="font-family:'Playfair Display',serif;margin-top:80px;">Open these letters when you need me 💌</h2>
 <div class="envelopes">
-  <div class="envelope" onclick="openEnvelope('miss')">
+  <div class="envelope" onclick="toggleEnvelope(this)">
+    <div class="flap"></div>
     When you miss me
-    <div class="seal"></div>
-    <div id="miss" class="letter-content">
+    <div class="letter-content">
       <p>(Write comfort and love.)</p>
     </div>
   </div>
 
-  <div class="envelope" onclick="openEnvelope('sleep')">
+  <div class="envelope" onclick="toggleEnvelope(this)">
+    <div class="flap"></div>
     When you can’t sleep
-    <div class="seal"></div>
-    <div id="sleep" class="letter-content">
+    <div class="letter-content">
       <p>(Write calm words.)</p>
     </div>
   </div>
 
-  <div class="envelope" onclick="openEnvelope('need')">
+  <div class="envelope" onclick="toggleEnvelope(this)">
+    <div class="flap"></div>
     When you feel needy
-    <div class="seal"></div>
-    <div id="need" class="letter-content">
+    <div class="letter-content">
       <p>(Write reassurance.)</p>
     </div>
   </div>
