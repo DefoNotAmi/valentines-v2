@@ -5,30 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Valentine 🤍</title>
 
-  <!-- Pretty fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg1:#ffe0ea;
+      --bg1:#ffd3e1;
       --bg2:#ffb3c6;
-      --bg3:#ff8fab;
+      --bg3:#ff90ac;
 
-      --ink:#6b102f;
-      --ink2:#7a0f2e;
+      --card:#ffe8f0;
+      --card2:rgba(255,255,255,0.70);
+
+      --ink:#7a1737;
+      --inkSoft:rgba(122,23,55,0.72);
 
       --rose:#ff4d6d;
       --rose2:#c9184a;
 
-      --card:rgba(255,255,255,0.78);
-      --card2:rgba(255,255,255,0.70);
-      --border:rgba(122,15,46,0.16);
-
-      --shadow:0 20px 45px rgba(255,77,109,0.22);
+      --border:rgba(122,23,55,0.12);
+      --shadow:0 22px 55px rgba(255,77,109,0.20);
       --shadow2:0 14px 30px rgba(255,77,109,0.18);
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;}
+    *{ margin:0; padding:0; box-sizing:border-box; }
     body{
       min-height:100vh;
       background: linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
@@ -37,300 +36,313 @@
       overflow-x:hidden;
     }
 
-    /* --- floating atmosphere --- */
-    .cloud{
-      position:fixed;
-      width:240px;height:74px;
-      background:rgba(255,255,255,0.82);
-      border-radius:60px;
-      filter: blur(0.6px);
-      z-index:1;
-      animation: cloudMove linear infinite;
-      opacity:0.9;
-    }
-    .cloud::before,.cloud::after{
-      content:"";
-      position:absolute;
-      background:rgba(255,255,255,0.92);
-      border-radius:50%;
-    }
-    .cloud::before{width:95px;height:95px;top:-44px;left:24px;}
-    .cloud::after{width:125px;height:125px;top:-60px;left:88px;}
-    @keyframes cloudMove{
-      from{transform:translateX(-320px);}
-      to{transform:translateX(110vw);}
-    }
-
+    /* Soft floating hearts background */
     .float-heart{
       position:fixed;
-      width:22px;height:22px;
+      width:18px;height:18px;
       background:var(--rose);
       transform:rotate(45deg);
-      opacity:0.35;
-      z-index:2;
+      opacity:0.18;
+      z-index:1;
       animation: floatUp linear infinite;
       pointer-events:none;
     }
     .float-heart::before,.float-heart::after{
       content:"";
       position:absolute;
-      width:22px;height:22px;
+      width:18px;height:18px;
       background:var(--rose);
       border-radius:50%;
     }
-    .float-heart::before{top:-11px;left:0;}
-    .float-heart::after{left:-11px;top:0;}
+    .float-heart::before{ top:-9px; left:0; }
+    .float-heart::after{ left:-9px; top:0; }
     @keyframes floatUp{
-      0%{transform:translateY(110vh) rotate(45deg);opacity:0;}
-      20%{opacity:0.45;}
-      100%{transform:translateY(-25vh) rotate(45deg);opacity:0;}
+      0%{ transform:translateY(110vh) rotate(45deg); opacity:0; }
+      25%{ opacity:0.18; }
+      100%{ transform:translateY(-25vh) rotate(45deg); opacity:0; }
     }
 
-    /* --- scene layout --- */
     .scene{
       position:relative;
-      z-index:3;
+      z-index:2;
       max-width:980px;
       margin:auto;
-      padding:120px 22px 220px;
+      padding:110px 22px 200px;
       text-align:center;
     }
 
-    /* --- title that REALLY stands out --- */
-    .titleWrap{
-      position:relative;
-      margin-bottom:95px;
-      padding:30px 18px 10px;
-    }
+    /* Title */
     h1{
       font-family:'Great Vibes',cursive;
-      font-size:6.2rem;
-      color:var(--ink2);
+      font-size:6rem;
       line-height:1;
-      text-shadow:
-        0 0 20px rgba(255,77,109,0.55),
-        0 0 40px rgba(255,77,109,0.40),
-        0 18px 40px rgba(122,15,46,0.10);
+      color:var(--ink);
+      text-shadow:0 0 30px rgba(255,77,109,0.45);
+      margin-bottom:12px;
     }
     .subtitle{
       font-family:'Playfair Display',serif;
-      font-size:1.45rem;
-      opacity:0.92;
-      margin-top:18px;
-    }
-    .sparkleLine{
-      width:min(520px,92%);
-      height:4px;
-      margin:28px auto 0;
-      border-radius:30px;
-      background: linear-gradient(to right, transparent, rgba(255,77,109,0.95), transparent);
-      box-shadow: 0 0 22px rgba(255,77,109,0.45);
+      font-size:1.35rem;
+      opacity:0.9;
+      margin-bottom:80px;
     }
 
-    /* --- heart-shaped paragraph box --- */
-    .heartBox{
-      position:relative;
+    /* Big card blocks like your screenshot */
+    .card{
       background:var(--card);
       border:1px solid var(--border);
-      border-radius:44px;
-      padding:50px 46px;
-      margin:78px 0;
+      border-radius:38px;
       box-shadow:var(--shadow);
+      padding:52px 54px;
+      margin:70px 0;
       text-align:left;
-    }
-    .heartBox::before{
-      content:"♥";
-      position:absolute;
-      top:-18px;
-      left:50%;
-      transform:translateX(-50%);
-      font-size:2rem;
-      color:var(--rose);
-      text-shadow:0 0 18px rgba(255,77,109,0.45);
-    }
-    .heartBox h2{
-      font-family:'Playfair Display',serif;
-      font-size:1.8rem;
-      margin-bottom:18px;
-      color:var(--ink2);
-      text-align:center;
-    }
-    .heartBox p{
-      font-size:1.12rem;
-      line-height:2.05;
-      margin-bottom:22px;
-      font-weight:300;
-    }
-    .fill{
-      font-style:italic;
-      opacity:0.65;
-    }
-
-    /* --- photo slots (small squares) --- */
-    .photoRow{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      justify-content:center;
-      margin-top:18px;
-    }
-    .photoSlot{
-      width:92px;
-      height:92px;
-      border-radius:18px;
-      background:rgba(255,255,255,0.55);
-      border:1px dashed rgba(201,24,74,0.45);
-      box-shadow: 0 10px 22px rgba(255,77,109,0.14);
       position:relative;
       overflow:hidden;
-      flex: 0 0 auto;
     }
-    .photoSlot::after{
+
+    /* subtle hearts in corners (decor) */
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255,77,109,0.10) 0 26px, transparent 27px),
+        radial-gradient(circle at 80% 15%, rgba(255,77,109,0.08) 0 36px, transparent 37px),
+        radial-gradient(circle at 90% 75%, rgba(255,77,109,0.08) 0 46px, transparent 47px),
+        radial-gradient(circle at 18% 82%, rgba(255,77,109,0.07) 0 42px, transparent 43px);
+      pointer-events:none;
+    }
+
+    .card h2{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      text-align:center;
+      margin-bottom:18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .card p{
+      font-size:1.08rem;
+      line-height:2.0;
+      margin-bottom:22px;
+      font-weight:300;
+      position:relative;
+      z-index:1;
+    }
+
+    .fill{
+      font-style:italic;
+      color:var(--inkSoft);
+    }
+
+    /* --- LEFT PHOTO VARIANT (only some boxes) --- */
+    .card.side-photo{
+      padding:44px 46px;
+    }
+    .card .inner{
+      display:flex;
+      gap:26px;
+      align-items:flex-start;
+      position:relative;
+      z-index:1;
+    }
+
+    .photo-column{
+      width:120px;
+      flex:0 0 120px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      align-items:center;
+      padding-top:6px;
+    }
+
+    .photo-slot{
+      width:108px;
+      height:108px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.55);
+      border:1px dashed rgba(201,24,74,0.45);
+      box-shadow:0 12px 22px rgba(255,77,109,0.14);
+      position:relative;
+      overflow:hidden;
+    }
+    .photo-slot::after{
       content:"+";
       position:absolute;
       inset:0;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:1.8rem;
+      font-size:1.9rem;
       color:rgba(201,24,74,0.55);
       font-weight:500;
     }
-    .photoHint{
-      text-align:center;
-      font-size:0.95rem;
-      opacity:0.65;
-      margin-top:12px;
+
+    /* small hearts on the sides of the image square */
+    .photo-slot::before{
+      content:"♥";
+      position:absolute;
+      left:-10px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:1.05rem;
+      color:rgba(255,77,109,0.65);
+      text-shadow:0 0 10px rgba(255,77,109,0.35);
+    }
+    .photo-slot .side-heart{
+      position:absolute;
+      right:-10px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:1.05rem;
+      color:rgba(255,77,109,0.65);
+      text-shadow:0 0 10px rgba(255,77,109,0.35);
+      pointer-events:none;
     }
 
-    /* --- bouquet bloom --- */
-    .bouquetArea{
-      margin:85px 0 10px;
-      text-align:center;
+    .content{
+      flex:1;
+      min-width:0;
     }
-    .bouquetBtn{
+
+    /* Bouquet */
+    .bouquet-area{
+      text-align:center;
+      margin:85px 0 10px;
+    }
+    .bouquet-btn{
       display:inline-flex;
       align-items:center;
       gap:14px;
-      padding:18px 26px;
+      padding:16px 22px;
       border-radius:999px;
-      border:1px solid rgba(201,24,74,0.22);
+      border:1px solid rgba(201,24,74,0.18);
       background:rgba(255,255,255,0.55);
       cursor:pointer;
       box-shadow:var(--shadow2);
       user-select:none;
-      transition: transform .15s ease;
     }
-    .bouquetBtn:active{transform:scale(0.98);}
-    .bouquetIcon{
-      font-size:2.2rem;
-      filter: drop-shadow(0 0 16px rgba(255,77,109,0.45));
-    }
-    .bouquetLabel{
+    .bouquet-icon{ font-size:2.2rem; }
+    .bouquet-label{
       font-family:'Playfair Display',serif;
-      font-size:1.15rem;
-      color:var(--ink2);
+      font-size:1.1rem;
     }
-
     .flowers{
-      margin-top:22px;
+      margin-top:20px;
       display:flex;
       justify-content:center;
       gap:8px;
       flex-wrap:wrap;
-      min-height:52px;
+      min-height:48px;
     }
     .flower{
       font-size:2.2rem;
       opacity:0;
-      transform: translateY(8px) scale(0.98);
+      transform: translateY(10px) scale(0.98);
       transition: opacity 0.9s ease, transform 0.9s ease;
-      filter: drop-shadow(0 0 12px rgba(255,77,109,0.25));
+      filter: drop-shadow(0 0 12px rgba(255,77,109,0.22));
     }
     .flower.visible{
       opacity:1;
       transform: translateY(0) scale(1);
     }
 
-    /* --- interactive heart (remade) --- */
-    .interactiveHeartWrap{
-      margin:88px 0 30px;
+    /* --- FIXED INTERACTIVE HEART (remade) --- */
+    .heart-reveal{
+      margin:90px 0 24px;
       text-align:center;
     }
-    .interactiveHeart{
-      width:96px;height:96px;
-      background: linear-gradient(145deg, #ff4d6d, #ff86a4);
+
+    .heart-btn{
+      width:96px;
+      height:86px;
       position:relative;
-      transform: rotate(45deg);
-      margin: 0 auto;
-      border-radius:18px;
+      margin:0 auto;
       cursor:pointer;
-      box-shadow: 0 0 28px rgba(255,77,109,0.55);
-      transition: transform .18s ease, box-shadow .18s ease;
+      filter: drop-shadow(0 0 20px rgba(255,77,109,0.45));
+      transition: transform .18s ease;
+      user-select:none;
     }
-    .interactiveHeart::before,
-    .interactiveHeart::after{
-      content:"";
+    .heart-btn:hover{ transform: scale(1.03); }
+
+    .heart-btn .left,
+    .heart-btn .right{
       position:absolute;
-      width:96px;height:96px;
-      background: linear-gradient(145deg, #ff4d6d, #ff86a4);
+      width:50px;
+      height:50px;
+      background:linear-gradient(145deg,#ff4d6d,#ff8fab);
       border-radius:50%;
+      top:0;
     }
-    .interactiveHeart::before{top:-48px;left:0;}
-    .interactiveHeart::after{left:-48px;top:0;}
-    .interactiveHeart:hover{
-      transform: rotate(45deg) scale(1.03);
-      box-shadow: 0 0 40px rgba(255,77,109,0.70);
+    .heart-btn .left{ left:18px; }
+    .heart-btn .right{ right:18px; }
+
+    .heart-btn .bottom{
+      position:absolute;
+      left:50%;
+      top:22px;
+      width:70px;
+      height:70px;
+      background:linear-gradient(145deg,#ff4d6d,#ff8fab);
+      transform: translateX(-50%) rotate(45deg);
+      border-radius:16px;
     }
 
-    .heartCenter{
+    .heart-btn .text{
       position:absolute;
       inset:0;
-      transform: rotate(-45deg);
       display:flex;
       align-items:center;
       justify-content:center;
+      font-family:'Playfair Display',serif;
       color:white;
-      font-weight:500;
-      letter-spacing:0.5px;
-      text-shadow: 0 0 18px rgba(0,0,0,0.25);
-      font-size:0.95rem;
-      padding:10px;
-      text-align:center;
+      font-size:1rem;
+      text-shadow:0 0 16px rgba(0,0,0,0.18);
+      letter-spacing:0.2px;
     }
 
-    .vowHint{
-      margin-top:12px;
-      font-family:'Playfair Display',serif;
-      opacity:0.85;
-    }
-
-    /* --- envelopes grid --- */
-    .lettersTitle{
-      font-family:'Playfair Display',serif;
-      font-size:2rem;
-      color:var(--ink2);
-      margin-top:110px;
-      text-shadow:0 10px 25px rgba(122,15,46,0.10);
-    }
-    .lettersSub{
+    .heart-hint{
       margin-top:10px;
       opacity:0.85;
-      font-size:1.05rem;
+      font-family:'Playfair Display',serif;
+    }
+
+    /* pulse when clicked */
+    @keyframes beat {
+      0%{ transform:scale(1); }
+      35%{ transform:scale(1.08); }
+      70%{ transform:scale(0.98); }
+      100%{ transform:scale(1); }
+    }
+    .beating{ animation: beat 380ms ease-out; }
+
+    /* Letters / envelopes */
+    .letters-title{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      text-align:center;
+      margin-top:110px;
+      margin-bottom:10px;
+    }
+    .letters-sub{
+      text-align:center;
+      opacity:0.85;
+      margin-bottom:46px;
     }
 
     .envelopes{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
       gap:28px;
-      margin-top:55px;
       text-align:left;
     }
 
     .envelope{
       position:relative;
-      background:rgba(255,255,255,0.92);
-      border:1px solid rgba(122,15,46,0.14);
+      background:rgba(255,255,255,0.93);
+      border:1px solid rgba(122,23,55,0.14);
       border-radius:22px;
       padding:26px 22px 20px;
       box-shadow:var(--shadow2);
@@ -341,32 +353,30 @@
     }
     .envelope:hover{ transform: translateY(-4px); }
 
-    /* flap */
-    .envFlap{
+    .flap{
       position:absolute;
       top:0; left:0;
       width:100%;
-      height:58%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.86));
+      height:56%;
+      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.86));
       border-top-left-radius:22px;
       border-top-right-radius:22px;
       transform-origin: top;
-      transform: rotateX(0deg);
       transition: transform 700ms cubic-bezier(.2,.8,.2,1);
       border-bottom: 1px solid rgba(201,24,74,0.18);
       z-index:2;
       pointer-events:none;
     }
 
-    /* wax seal */
+    /* WAX SEAL */
     .wax{
       position:absolute;
-      top:18px; left:50%;
-      transform: translateX(-50%);
-      width:34px; height:34px;
+      top:16px; left:50%;
+      transform:translateX(-50%);
+      width:36px;height:36px;
       border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, #ff6f91, #c9184a 65%);
-      box-shadow: 0 0 16px rgba(255,77,109,0.55);
+      background: radial-gradient(circle at 30% 30%, #ff6f91, #c9184a 70%);
+      box-shadow:0 0 16px rgba(255,77,109,0.55);
       z-index:3;
       pointer-events:none;
     }
@@ -377,19 +387,18 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      color:rgba(255,255,255,0.9);
+      color:rgba(255,255,255,0.92);
       font-size:1.05rem;
-      text-shadow:0 0 12px rgba(0,0,0,0.15);
-      transform: translateY(-1px);
+      text-shadow:0 0 12px rgba(0,0,0,0.12);
     }
 
-    /* shimmer on click */
+    /* SHIMMER */
     .shimmer{
       position:absolute;
-      top:0; left:-120%;
-      width:60%;
+      top:0; left:-130%;
+      width:70%;
       height:100%;
-      background: linear-gradient(110deg, transparent, rgba(255,255,255,0.55), transparent);
+      background: linear-gradient(110deg, transparent, rgba(255,255,255,0.65), transparent);
       transform: skewX(-20deg);
       z-index:4;
       opacity:0;
@@ -400,113 +409,85 @@
       animation: shimmerMove 650ms ease-out;
     }
     @keyframes shimmerMove{
-      from{ left:-120%; }
-      to{ left:160%; }
+      from{ left:-130%; }
+      to{ left:170%; }
     }
 
-    /* open state = flap tears open */
-    .envelope.open .envFlap{
+    .envelope.open .flap{
       transform: rotateX(-180deg);
     }
 
-    .envHeader{
-      position:relative;
-      z-index:1;
-      padding-top:18px;
-    }
-    .envTitle{
+    .env-title{
       font-family:'Playfair Display',serif;
       font-size:1.15rem;
-      color:var(--ink2);
-      margin-bottom:8px;
-    }
-    .envTag{
-      font-size:0.95rem;
-      opacity:0.75;
-      margin-bottom:12px;
-    }
-
-    .letterPaper{
+      margin-top:18px;
+      color:var(--ink);
       position:relative;
       z-index:1;
-      margin-top:14px;
-      background: rgba(255,255,255,0.80);
+    }
+    .env-tag{
+      opacity:0.75;
+      font-size:0.95rem;
+      margin-top:6px;
+      position:relative;
+      z-index:1;
+    }
+
+    .letter-paper{
+      margin-top:16px;
+      background:rgba(255,255,255,0.82);
       border-radius:16px;
-      padding:16px 16px 8px;
-      border:1px solid rgba(201,24,74,0.15);
+      padding:16px 16px 10px;
+      border:1px solid rgba(201,24,74,0.14);
       max-height:0;
       overflow:hidden;
-      transition: max-height 850ms cubic-bezier(.2,.9,.2,1), opacity 500ms ease;
       opacity:0;
+      transition: max-height 850ms cubic-bezier(.2,.9,.2,1), opacity 500ms ease;
+      position:relative;
+      z-index:1;
     }
-    .envelope.open .letterPaper{
-      max-height:480px;
+    .envelope.open .letter-paper{
+      max-height:520px;
       opacity:1;
     }
-    .letterPaper p{
+    .letter-paper p{
       font-size:1.02rem;
       line-height:1.9;
       margin-bottom:14px;
     }
 
-    /* small picture squares inside letters */
-    .letterPhotos{
+    .letter-photos{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      justify-content:flex-start;
       margin:10px 0 6px;
     }
-    .letterPhotos .photoSlot{
+    .letter-photos .photo-slot{
       width:74px;height:74px;border-radius:16px;
     }
 
-    /* gentle divider */
-    .softDivider{
-      width:min(680px, 92%);
-      height:2px;
-      margin:90px auto 0;
-      border-radius:30px;
-      background: linear-gradient(to right, transparent, rgba(201,24,74,0.55), transparent);
-      box-shadow:0 0 18px rgba(255,77,109,0.25);
-    }
-
     footer{
-      margin-top:190px;
-      opacity:0.7;
+      margin-top:180px;
+      opacity:0.75;
       text-align:center;
       font-size:1rem;
     }
 
-    /* responsive tweaks */
-    @media (max-width:640px){
-      h1{font-size:4.7rem;}
-      .heartBox{padding:36px 26px;border-radius:34px;}
-      .heartBox h2{font-size:1.55rem;}
-      p{font-size:1.07rem;}
-      .interactiveHeart{width:86px;height:86px;}
-      .interactiveHeart::before,.interactiveHeart::after{width:86px;height:86px;}
-      .interactiveHeart::before{top:-43px;}
-      .interactiveHeart::after{left:-43px;}
+    @media (max-width:700px){
+      h1{ font-size:4.9rem; }
+      .card{ padding:42px 30px; border-radius:30px; }
+      .card.side-photo{ padding:38px 24px; }
+      .card .inner{ flex-direction:column; align-items:center; text-align:left; }
+      .photo-column{ width:100%; flex:unset; flex-direction:row; justify-content:center; }
+      .photo-slot{ width:86px; height:86px; }
     }
   </style>
 </head>
 
 <body>
   <script>
-    // --- Clouds (angel vibes) ---
-    for (let i = 0; i < 7; i++) {
-      const c = document.createElement("div");
-      c.className = "cloud";
-      c.style.top = (Math.random() * 40) + "%";
-      c.style.opacity = (0.7 + Math.random() * 0.25).toFixed(2);
-      c.style.animationDuration = (70 + Math.random() * 55) + "s";
-      c.style.animationDelay = (-Math.random() * 70) + "s";
-      document.body.appendChild(c);
-    }
-
-    // --- Floating hearts (soft) ---
-    for (let i = 0; i < 34; i++) {
+    // Floating hearts (background)
+    for (let i = 0; i < 36; i++) {
       const h = document.createElement("div");
       h.className = "float-heart";
       h.style.left = (Math.random() * 100) + "vw";
@@ -517,334 +498,287 @@
   </script>
 
   <div class="scene">
-    <div class="titleWrap">
-      <h1>My Valentine</h1>
-      <div class="subtitle">A little world made with love, just for you 🤍</div>
-      <div class="sparkleLine"></div>
-    </div>
+    <h1>My Valentine</h1>
+    <div class="subtitle">A little love-world made just for you 🤍</div>
 
-    <!-- BOX 1 -->
-    <div class="heartBox">
+    <!-- CARD 1 (normal) -->
+    <div class="card">
       <h2>Before anything else…</h2>
       <p>
-        I wanted to give you something that feels like a hug, even if it’s made out of words.
-        Something you can open whenever you want, and feel the same warmth every time.
-        Not a “normal website” — more like a small, soft place that belongs to us.
+        I didn’t want this to feel like a normal website. I wanted it to feel like a place you step into—
+        soft, sweet, and full of love. Something that looks like Valentine’s Day, feels like me, and reminds you
+        that you’re always held in my heart.
       </p>
-      <p class="fill">
-        (Fill in: say why you made this, what you feel right now, or what you wish you could do together today.)
-      </p>
-      <div class="photoRow">
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-      </div>
-      <div class="photoHint fill">(Add 1–3 photos here: you, something that reminds him of you, a screenshot of your chats, a place you want to go together.)</div>
+      <p class="fill">(Fill in: what you feel right now / why you made this / what you wish you could do together.)</p>
     </div>
 
-    <!-- BOX 2 -->
-    <div class="heartBox">
-      <h2>What I love about you</h2>
-      <p>
-        There are a thousand reasons, and none of them are “big” in a loud way.
-        It’s the little things: the way you exist, the way you think, the way you make my days feel softer.
-        I love you in the quiet moments — the ones people don’t see — because that’s where love feels the most real.
-      </p>
-      <p class="fill">(Fill in: list your favorite little things about him — habits, phrases, quirks, tiny gestures.)</p>
-      <div class="photoRow">
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
+    <!-- CARD 2 (LEFT PHOTO) -->
+    <div class="card side-photo">
+      <div class="inner">
+        <div class="photo-column">
+          <div class="photo-slot"><span class="side-heart">♥</span></div>
+        </div>
+        <div class="content">
+          <h2>What I love about you</h2>
+          <p>
+            It’s not only the big moments. It’s the small ones: the way you talk, the way you care, the way you exist
+            with that specific energy that makes my day feel brighter. Loving you feels like something I want to protect.
+          </p>
+          <p class="fill">(Fill in: list tiny things: his habits, his voice, his reactions, his jokes, his kindness.)</p>
+        </div>
       </div>
-      <div class="photoHint fill">(Optional: add 1–2 photos that match what you wrote.)</div>
     </div>
 
-    <!-- BOX 3 -->
-    <div class="heartBox">
-      <h2>What you do to my heart</h2>
-      <p>
-        Loving you doesn’t feel like chaos. It feels like coming home.
-        It feels like being understood in ways I didn’t even know I needed.
-        And even if we’re far, the way I care about you still finds you — in messages, in thoughts, in prayers,
-        in the way my heart instinctively turns toward you.
-      </p>
-      <p class="fill">(Fill in: describe how loving him feels — warm, steady, safe, intense, peaceful… your words.)</p>
+    <!-- CARD 3 (LEFT PHOTO, 2 squares) -->
+    <div class="card side-photo">
+      <div class="inner">
+        <div class="photo-column">
+          <div class="photo-slot"><span class="side-heart">♥</span></div>
+          <div class="photo-slot"><span class="side-heart">♥</span></div>
+        </div>
+        <div class="content">
+          <h2>Little memories I keep</h2>
+          <p>
+            There are moments that replay in my mind like tiny movie scenes: words you said without realizing they stayed with me,
+            the way you made me smile when I didn’t expect it, the quiet sweetness that lives in your presence.
+          </p>
+          <p class="fill">(Fill in: write 3–6 little memories, even if they seem small. Those are the ones that hit.)</p>
+          <p class="fill">(Optional: add short bullet-like lines, one per memory.)</p>
+        </div>
+      </div>
     </div>
 
-    <!-- BOUQUET BLOOM -->
-    <div class="bouquetArea">
-      <div class="bouquetBtn" id="bouquetBtn" aria-label="Bloom the bouquet">
-        <div class="bouquetIcon">💐</div>
-        <div class="bouquetLabel">Tap to bloom your bouquet</div>
+    <!-- Bouquet -->
+    <div class="bouquet-area">
+      <div class="bouquet-btn" id="bouquetBtn">
+        <div class="bouquet-icon">💐</div>
+        <div class="bouquet-label">Tap to bloom the bouquet</div>
       </div>
-
       <div class="flowers" id="flowers">
         <span class="flower">🌹</span>
         <span class="flower">🌷</span>
         <span class="flower">🌸</span>
-        <span class="flower">🌹</span>
         <span class="flower">🌺</span>
         <span class="flower">🌼</span>
         <span class="flower">🌹</span>
+        <span class="flower">🌸</span>
       </div>
     </div>
 
-    <div class="heartBox" id="bouquetText" style="display:none;">
+    <div class="card" id="bouquetText" style="display:none;">
       <h2>One flower at a time</h2>
       <p>
-        I wanted this bouquet to bloom slowly, the way feelings do — the way ours did.
-        Not rushed, not forced, just… gently becoming more and more real.
+        I wanted the bouquet to bloom slowly—like love does. Not rushed. Not forced.
+        Just gently… becoming more real, more ours, more certain.
       </p>
-      <p class="fill">(Fill in: what this bouquet represents: your love, your patience, your promise, your devotion.)</p>
-      <div class="photoRow">
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-      </div>
-      <div class="photoHint fill">(Optional: add tiny photos that feel “us” — anything meaningful.)</div>
+      <p class="fill">(Fill in: what the bouquet represents—your love, your promise, your devotion.)</p>
     </div>
 
-    <!-- BOX 4 -->
-    <div class="heartBox">
+    <!-- CARD 4 (normal) -->
+    <div class="card">
       <h2>Future daydreams</h2>
       <p>
-        I think about the future in soft snapshots: a quiet day together, a simple date, a morning where I don’t have to miss you.
-        I imagine the little routines we’ll have, the places we’ll go, the way love will feel easier when it’s close.
+        I imagine a future where distance is just a memory. Where Valentine’s Day is close and quiet,
+        not something we have to translate into screens. Until then, I’m still here—choosing you, loving you,
+        and holding you in every small way I can.
       </p>
-      <p class="fill">(Fill in: describe a future moment together: where you are, what you’re doing, how it feels.)</p>
-      <div class="photoRow">
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-      </div>
-      <div class="photoHint fill">(Add small photos of places you want to go, date ideas, aesthetic pictures, anything.)</div>
+      <p class="fill">(Fill in: describe a future moment together in detail—where you are, what you’re doing, what you feel.)</p>
     </div>
 
-    <!-- REMADE INTERACTIVE HEART -->
-    <div class="interactiveHeartWrap">
-      <div class="interactiveHeart" id="vowHeart" role="button" tabindex="0" aria-label="Reveal secret vow">
-        <div class="heartCenter">tap me<br>for a vow</div>
+    <!-- FIXED interactive heart -->
+    <div class="heart-reveal">
+      <div class="heart-btn" id="vowHeart" role="button" tabindex="0" aria-label="Reveal secret vow">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+        <div class="text">tap<br>for vow</div>
       </div>
-      <div class="vowHint">(A secret promise, hidden inside the heart.)</div>
+      <div class="heart-hint">A secret vow hidden inside the heart.</div>
     </div>
 
-    <div class="heartBox" id="secretVowBox" style="display:none;">
+    <div class="card" id="secretVowBox" style="display:none;">
       <h2>My secret vow</h2>
       <p>
-        I promise to love you in the ways you need — not only when it’s easy, not only when you’re confident,
-        but also when you’re tired, quiet, unsure, or simply needing reassurance.
-        I promise to be gentle with your heart, to choose you with intention,
-        and to keep showing up in all the small ways that build something lasting.
+        I promise to be soft with your heart. I promise to love you in the ways you need—
+        not only when you’re confident, but also when you’re tired, missing me, or craving reassurance.
+        I want you to feel wanted, safe, and chosen.
       </p>
-      <p class="fill">(Fill in: write your personal vow in your own voice — sweet, honest, specific.)</p>
-      <div class="photoRow">
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
+      <p class="fill">(Fill in: your personal vow—make it specific, like real promises you intend to keep.)</p>
+    </div>
+
+    <!-- Two more paragraph cards (more boxes) -->
+    <div class="card side-photo">
+      <div class="inner">
+        <div class="photo-column">
+          <div class="photo-slot"><span class="side-heart">♥</span></div>
+        </div>
+        <div class="content">
+          <h2>Things I wish you knew</h2>
+          <p>
+            You are not “too much.” You are not hard to love. You are not a burden for having needs.
+            You deserve to be cared for in a way that feels steady and true.
+          </p>
+          <p class="fill">(Fill in: the exact truths you wish he believed about himself.)</p>
+        </div>
       </div>
-      <div class="photoHint fill">(Optional: add 1–2 photos that match the vow — you two, your aesthetic, something intimate.)</div>
     </div>
 
-    <!-- MORE BOXES (long & detailed) -->
-    <div class="heartBox">
-      <h2>Things I wish you knew</h2>
+    <div class="card">
+      <h2>If you ever doubt this…</h2>
       <p>
-        Sometimes you might not see yourself the way I see you.
-        You might focus on your flaws, or your doubts, or the parts of you that feel messy.
-        But from where I stand, you are unbelievably lovable.
-        You are not too much. You are not hard to love. You are not a burden.
-        You are a person I genuinely adore.
+        Remember that I made a whole little Valentine world for you. Not because I had to—
+        but because you mattered enough to deserve it. I wanted you to have something you can open
+        and instantly feel loved.
       </p>
-      <p class="fill">(Fill in: write the exact things you wish he believed about himself.)</p>
+      <p class="fill">(Fill in: your closing reassurance, pet names, inside jokes, whatever feels like YOU.)</p>
     </div>
 
-    <div class="heartBox">
-      <h2>Little memories I keep</h2>
-      <p>
-        There are moments that replay in my mind like tiny movie scenes:
-        words you said without realizing they stayed with me,
-        the way you made me smile when I didn’t expect it,
-        the quiet sweetness that lives in your presence.
-      </p>
-      <p class="fill">(Fill in: write 3–6 little memories, even if they seem small. Those are the ones that hit.)</p>
-      <div class="photoRow">
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-        <div class="photoSlot"></div>
-      </div>
-      <div class="photoHint fill">(Add screenshots, tiny photos, or symbols that match each memory.)</div>
-    </div>
-
-    <div class="softDivider"></div>
-
-    <!-- FIXED CLICKABLE LETTERS -->
-    <div class="lettersTitle">Open these sealed letters when you need me 💌</div>
-    <div class="lettersSub">(They open one at a time — like little private moments.)</div>
+    <!-- Letters -->
+    <div class="letters-title">Sealed letters for different moments 💌</div>
+    <div class="letters-sub">(Click one seal. Only one letter opens at a time.)</div>
 
     <div class="envelopes" id="envelopes">
-      <!-- Envelope 1 -->
+      <!-- 1 -->
       <div class="envelope" data-id="miss">
-        <div class="envFlap"></div>
-        <div class="wax"></div>
-        <div class="shimmer"></div>
-
-        <div class="envHeader">
-          <div class="envTitle">When you miss me</div>
-          <div class="envTag">Break the seal. Read slowly.</div>
-        </div>
-
-        <div class="letterPaper" id="letter-miss">
-          <p class="fill">(Fill in: comfort words. Tell him you’re here. Tell him you miss him too.)</p>
-          <p class="fill">(Fill in: something specific you’d do if you were together right now.)</p>
-
-          <div class="letterPhotos">
-            <div class="photoSlot"></div>
-            <div class="photoSlot"></div>
+        <div class="flap"></div><div class="wax"></div><div class="shimmer"></div>
+        <div class="env-title">When you miss me</div>
+        <div class="env-tag">A letter that feels like a hug.</div>
+        <div class="letter-paper">
+          <p class="fill">(Fill in: comfort words. Tell him you miss him too. Tell him what you’d do if you were there.)</p>
+          <div class="letter-photos">
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
           </div>
-          <p class="fill">(Add 1–2 tiny pictures that feel comforting.)</p>
+          <p class="fill">(Add 1–2 tiny photos that feel comforting.)</p>
         </div>
       </div>
 
-      <!-- Envelope 2 -->
+      <!-- 2 -->
       <div class="envelope" data-id="sleep">
-        <div class="envFlap"></div>
-        <div class="wax"></div>
-        <div class="shimmer"></div>
-
-        <div class="envHeader">
-          <div class="envTitle">When you can’t sleep</div>
-          <div class="envTag">A calm letter, like a lullaby.</div>
-        </div>
-
-        <div class="letterPaper" id="letter-sleep">
-          <p class="fill">(Fill in: slow, soothing words. Tell him to breathe. Tell him he’s safe.)</p>
-          <p class="fill">(Fill in: a “close your eyes and imagine…” scene with you.)</p>
-
-          <div class="letterPhotos">
-            <div class="photoSlot"></div>
-            <div class="photoSlot"></div>
-            <div class="photoSlot"></div>
+        <div class="flap"></div><div class="wax"></div><div class="shimmer"></div>
+        <div class="env-title">When you can’t sleep</div>
+        <div class="env-tag">Slow words, like a lullaby.</div>
+        <div class="letter-paper">
+          <p class="fill">(Fill in: calming words, breathing cues, a gentle “close your eyes and imagine…” scene.)</p>
+          <div class="letter-photos">
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
           </div>
-          <p class="fill">(Add calming photos: sky, clouds, a soft selfie, anything peaceful.)</p>
+          <p class="fill">(Add calming photos: clouds, a soft selfie, anything peaceful.)</p>
         </div>
       </div>
 
-      <!-- Envelope 3 -->
+      <!-- 3 -->
       <div class="envelope" data-id="need">
-        <div class="envFlap"></div>
-        <div class="wax"></div>
-        <div class="shimmer"></div>
-
-        <div class="envHeader">
-          <div class="envTitle">When you feel needy</div>
-          <div class="envTag">You’re allowed to need love.</div>
-        </div>
-
-        <div class="letterPaper" id="letter-need">
-          <p class="fill">(Fill in: validation. Tell him he’s not “too much”. Tell him you want him.)</p>
-          <p class="fill">(Fill in: affectionate words, pet names, reassurance, softness.)</p>
-
-          <div class="letterPhotos">
-            <div class="photoSlot"></div>
-            <div class="photoSlot"></div>
+        <div class="flap"></div><div class="wax"></div><div class="shimmer"></div>
+        <div class="env-title">When you feel needy</div>
+        <div class="env-tag">You’re allowed to need love.</div>
+        <div class="letter-paper">
+          <p class="fill">(Fill in: validation + affection. Tell him he’s wanted, not “too much.”)</p>
+          <div class="letter-photos">
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
           </div>
-          <p class="fill">(Add 1–2 tiny photos that feel intimate or warm.)</p>
+          <p class="fill">(Add 1–2 tiny photos that feel warm or intimate.)</p>
         </div>
       </div>
 
-      <!-- Envelope 4 (extra, because you asked for LONG + more fill-in) -->
+      <!-- 4 -->
       <div class="envelope" data-id="hard">
-        <div class="envFlap"></div>
-        <div class="wax"></div>
-        <div class="shimmer"></div>
-
-        <div class="envHeader">
-          <div class="envTitle">When you had a hard day</div>
-          <div class="envTag">Come here first.</div>
-        </div>
-
-        <div class="letterPaper" id="letter-hard">
-          <p class="fill">(Fill in: comfort + pride. Tell him you see how hard he tries.)</p>
-          <p class="fill">(Fill in: remind him of something he survived before.)</p>
-
-          <div class="letterPhotos">
-            <div class="photoSlot"></div>
-            <div class="photoSlot"></div>
-            <div class="photoSlot"></div>
+        <div class="flap"></div><div class="wax"></div><div class="shimmer"></div>
+        <div class="env-title">When you had a hard day</div>
+        <div class="env-tag">Come here first.</div>
+        <div class="letter-paper">
+          <p class="fill">(Fill in: pride + comfort. Tell him you see him. Remind him he always survives.)</p>
+          <div class="letter-photos">
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
           </div>
-          <p class="fill">(Add 1–3 photos that cheer him up.)</p>
+          <p class="fill">(Add photos that cheer him up.)</p>
         </div>
       </div>
-    </div>
 
-    <!-- Closing boxes -->
-    <div class="heartBox">
-      <h2>My final words for you</h2>
-      <p>
-        If you remember only one thing from this page, let it be this:
-        you are loved on purpose.
-        Not casually. Not temporarily. Not as a convenience.
-        You are loved carefully — like something precious.
-      </p>
-      <p class="fill">(Fill in: your signature ending. Your “I love you”. Your date. Something only he would understand.)</p>
-
-      <div class="photoRow">
-        <div class="photoSlot"></div>
+      <!-- +2 NEW LETTERS -->
+      <!-- 5 -->
+      <div class="envelope" data-id="overthink">
+        <div class="flap"></div><div class="wax"></div><div class="shimmer"></div>
+        <div class="env-title">When you’re overthinking</div>
+        <div class="env-tag">A gentle reset.</div>
+        <div class="letter-paper">
+          <p class="fill">(Fill in: “It’s okay.” “Breathe.” “I’m not going anywhere.” Make it calm and steady.)</p>
+          <div class="letter-photos">
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+          </div>
+          <p class="fill">(Add tiny calming images.)</p>
+        </div>
       </div>
-      <div class="photoHint fill">(Optional: add one last tiny photo that feels like “the ending card”.)</div>
+
+      <!-- 6 -->
+      <div class="envelope" data-id="goodmorning">
+        <div class="flap"></div><div class="wax"></div><div class="shimmer"></div>
+        <div class="env-title">A good morning letter</div>
+        <div class="env-tag">Start your day loved.</div>
+        <div class="letter-paper">
+          <p class="fill">(Fill in: a sweet morning message + a tiny plan for the day + “I’m proud of you.”)</p>
+          <div class="letter-photos">
+            <div class="photo-slot"><span class="side-heart">♥</span></div>
+          </div>
+          <p class="fill">(Add one tiny photo that feels like “morning warmth”.)</p>
+        </div>
+      </div>
     </div>
 
     <footer>
       Forever yours 🤍<br>
-      <span class="fill">(your name & the date)</span>
+      <span class="fill">(your name & date)</span>
     </footer>
   </div>
 
   <script>
-    // --- Bouquet that re-blooms every click ---
+    // Bouquet rebloom every click
     let blooming = false;
+    const bouquetBtn = document.getElementById('bouquetBtn');
+    const bouquetText = document.getElementById('bouquetText');
+    const flowers = Array.from(document.querySelectorAll('.flower'));
 
-    function bloomBouquet() {
+    function bloomBouquet(){
       if (blooming) return;
       blooming = true;
 
-      const flowers = Array.from(document.querySelectorAll('.flower'));
+      bouquetText.style.display = 'none';
       flowers.forEach(f => f.classList.remove('visible'));
-
-      document.getElementById('bouquetText').style.display = 'none';
 
       let i = 0;
       const step = () => {
-        if (i < flowers.length) {
+        if (i < flowers.length){
           flowers[i].classList.add('visible');
           i++;
           setTimeout(step, 520);
         } else {
-          document.getElementById('bouquetText').style.display = 'block';
+          bouquetText.style.display = 'block';
           blooming = false;
         }
       };
       step();
     }
+    bouquetBtn.addEventListener('click', bloomBouquet);
 
-    document.getElementById('bouquetBtn').addEventListener('click', bloomBouquet);
-
-    // --- Remade heart interaction: reveals vow box + gentle pulse ---
+    // Interactive vow heart (fixed)
     const vowHeart = document.getElementById('vowHeart');
     const vowBox = document.getElementById('secretVowBox');
     let vowOpen = false;
 
-    function toggleVow() {
+    function toggleVow(){
       vowOpen = !vowOpen;
       vowBox.style.display = vowOpen ? 'block' : 'none';
 
-      // small “beat” animation
-      vowHeart.animate(
-        [
-          { transform: 'rotate(45deg) scale(1)' },
-          { transform: 'rotate(45deg) scale(1.08)' },
-          { transform: 'rotate(45deg) scale(1)' }
-        ],
-        { duration: 380, easing: 'ease-out' }
-      );
+      // cute pulse
+      vowHeart.classList.remove('beating');
+      void vowHeart.offsetWidth;
+      vowHeart.classList.add('beating');
     }
 
     vowHeart.addEventListener('click', toggleVow);
@@ -852,26 +786,25 @@
       if (e.key === 'Enter' || e.key === ' ') toggleVow();
     });
 
-    // --- Clickable letters FIXED: open one at a time + shimmer + flap animation ---
+    // Clickable letters: one open at a time + shimmer
     const envelopes = Array.from(document.querySelectorAll('.envelope'));
 
-    function closeAllExcept(exceptEl) {
+    function closeAllExcept(except){
       envelopes.forEach(env => {
-        if (env !== exceptEl) env.classList.remove('open');
+        if (env !== except) env.classList.remove('open');
       });
     }
 
     envelopes.forEach(env => {
       env.addEventListener('click', (e) => {
-        // prevent selection weirdness
         e.preventDefault();
 
-        // shimmer on every click
+        // shimmer restart
         env.classList.remove('shimmering');
-        void env.offsetWidth; // restart animation
+        void env.offsetWidth;
         env.classList.add('shimmering');
 
-        // open one at a time
+        // open/close logic
         const willOpen = !env.classList.contains('open');
         closeAllExcept(env);
         if (willOpen) env.classList.add('open');
