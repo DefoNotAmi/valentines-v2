@@ -8,6 +8,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
+   
+    #flying-hearts-bg{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* keep it behind your content */
+  overflow: hidden;
+}
+
+/* Each heart */
+.fh-heart{
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  left: var(--x);
+  bottom: -12vh;
+  opacity: var(--o);
+  transform: rotate(45deg) scale(var(--k));
+  animation: fh-float var(--d) linear infinite;
+  filter: blur(var(--b));
+  background: var(--c);
+}
+
+/* Heart bumps */
+.fh-heart::before,
+.fh-heart::after{
+  content: "";
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  background: inherit;
+  border-radius: 50%;
+}
+.fh-heart::before{ top: calc(var(--s) * -0.5); left: 0; }
+.fh-heart::after{ left: calc(var(--s) * -0.5); top: 0; }
+
+@keyframes fh-float{
+  0%{
+    transform: translateY(0) rotate(45deg) scale(var(--k));
+    opacity: 0;
+  }
+  10%{ opacity: var(--o); }
+  100%{
+    transform: translateY(-125vh) rotate(45deg) scale(var(--k));
+    opacity: 0;
+  }
+}
+
+/* ✅ IMPORTANT: make sure your main content sits above the hearts
+   Add this to the main wrapper of your page (example: .scene, .container, etc.) */
+.scene, .content, main{
+  position: relative;
+  z-index: 2;
+} 
     :root{
       --bg1:#ffd4e2;
       --bg2:#ffb3c6;
@@ -472,6 +526,7 @@
 </head>
 
 <body>
+  <div id="flying-hearts-bg" aria-hidden="true"></div>
   <script>
     // Clouds
     for (let i = 0; i < 7; i++) {
@@ -789,6 +844,47 @@
         else env.classList.remove('open');
       });
     });
+
+    (function makeFlyingHearts(){
+  const holder = document.getElementById("flying-hearts-bg");
+  if(!holder) return;
+
+  const colors = [
+    "rgba(255,77,109,0.95)",   // rose
+    "rgba(255,143,171,0.95)",  // soft pink
+    "rgba(201,24,74,0.95)",    // deep red
+    "rgba(255,111,145,0.95)",  // warm pink
+    "rgba(255,153,186,0.95)"   // pastel pink
+  ];
+
+  const HEARTS = 40; // change this number if you want more/less hearts
+
+  for(let i=0;i<HEARTS;i++){
+    const h = document.createElement("div");
+    h.className = "fh-heart";
+
+    // randomize heart properties
+    const size = 10 + Math.random()*18;        // px
+    const x = Math.random()*100;               // vw
+    const dur = 8 + Math.random()*10;          // seconds
+    const delay = Math.random()*dur;           // seconds
+    const opacity = 0.10 + Math.random()*0.16; // subtle
+    const scale = 0.7 + Math.random()*1.0;
+    const blur = (Math.random() < 0.4) ? (0.2 + Math.random()*0.8) : 0; // some soft ones
+
+    h.style.setProperty("--s", size + "px");
+    h.style.setProperty("--x", x + "vw");
+    h.style.setProperty("--d", dur + "s");
+    h.style.setProperty("--o", opacity);
+    h.style.setProperty("--k", scale);
+    h.style.setProperty("--b", blur + "px");
+    h.style.setProperty("--c", colors[Math.floor(Math.random()*colors.length)]);
+
+    h.style.animationDelay = (-delay) + "s"; // start at different points
+
+    holder.appendChild(h);
+  }
+})();
   </script>
 </body>
 </html>
